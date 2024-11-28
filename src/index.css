@@ -16,3 +16,8 @@
         width: 170px;
     }
 }
+
+#root {
+    min-height: 100vh;
+    background-color: black;
+}
