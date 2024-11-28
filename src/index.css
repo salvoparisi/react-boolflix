@@ -1,0 +1,8 @@
+.filmCard {
+    width: 300px;
+    margin: 10px;
+
+    h4 {
+        height: 58px;
+    }
+}
