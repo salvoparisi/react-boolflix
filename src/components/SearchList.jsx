@@ -28,14 +28,19 @@ function Search() {
                 <>
                     <h2 className='text-center'>Stai cercando</h2>
                     <div className="container d-flex flex-wrap justify-content-around">
-                        {movie.map((film) => (
-                            <div className="filmCard" key={film.id}>
-                                <div className="imgContainer">
-                                    <img src={`${imgUrl}${film.poster_path}`} alt={film.title} />
+                        {movie.length == 0 ? (
+                            <h3>Film non trovato</h3>
+                        ) : (
+                            movie.map((film) => (
+                                <div className="filmCard" key={film.id}>
+                                    <div className="imgContainer">
+                                        <img src={`${imgUrl}${film.poster_path}`} alt={film.title} />
+                                    </div>
+                                    <h4>{film.title}</h4>
                                 </div>
-                                <h4>{film.title}</h4>
-                            </div>
-                        ))}
+                            ))
+                        )
+                        }
                     </div>
                 </>
             )}
