@@ -5,4 +5,14 @@
     h4 {
         height: 58px;
     }
+
+    .imgContainer {
+        height: 450px;
+    }
+}
+
+.logo {
+    img {
+        width: 170px;
+    }
 }

@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
+import Search from './SearchList'
+import { SearchContext } from '../context/SearchContext'
 
 function MovieList() {
+    const { word } = useContext(SearchContext)
     const [movie, setMovie] = useState([])
     const [page, setPage] = useState(1)
     const imgUrl = 'https://image.tmdb.org/t/p/w300'
@@ -29,31 +32,42 @@ function MovieList() {
 
     const prevPage = () => {
         setPage((prev) => prev - 1)
-        console.log(page);
+
         fetchMovie()
     }
     const nextPage = () => {
         setPage((prev) => prev + 1)
-        console.log(page);
+
         fetchMovie()
     }
 
-    console.log(movie);
+
 
     return (
-        <div className='container d-flex flex-wrap'>
-            {movie.map(film => {
-                return <>
-                    <div className='filmCard'>
-                        <img src={`${imgUrl}${film.poster_path}`} alt="" />
-                        <h4>{film.title}</h4>
-                    </div>
+        <>
+            <Search />
+            {word === "" ? (
+                <>
+                    <h2 className='text-center'>In tendenza</h2>
+                    <div className='container d-flex flex-wrap justify-content-between'>
+                        {movie.map(film => {
+                            return <>
+                                <div className='filmCard'>
+                                    <div className='imgContainer'>
+                                        <img src={`${imgUrl}${film.poster_path}`} alt="" />
+                                    </div>
+                                    <h4>{film.title}</h4>
+                                </div>
 
+                            </>
+                        })}
+                        <button onClick={prevPage}>prev</button>
+                        <button onClick={nextPage}>next</button>
+                    </div>
                 </>
-            })}
-            <button onClick={prevPage}>prev</button>
-            <button onClick={nextPage}>next</button>
-        </div>
+
+            ) : <span></span>}
+        </>
     )
 }
 

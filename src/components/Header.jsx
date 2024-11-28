@@ -1,8 +1,9 @@
+import logo from '../assets/BootflixLogo.png'
 function Header() {
     return (
-        <>
-            <h2>BootFlix</h2>
-        </>
+        <div className='logo'>
+            <img src={logo} alt="" />
+        </div>
     )
 }
 
