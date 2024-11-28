@@ -6,7 +6,7 @@ export const GlobalProvider = ({ children }) => {
 
 
     return (
-        <GlobalContext.Provider >
+        <GlobalContext.Provider value={children}>
             {children}
         </GlobalContext.Provider>
     );
