@@ -49,7 +49,7 @@ function MovieList() {
             {word === "" ? (
                 <>
                     <h2 className='text-center'>In tendenza</h2>
-                    <div className='container d-flex flex-wrap justify-content-between'>
+                    <div className='container d-flex flex-wrap justify-content-around'>
                         {movie.map(film => {
                             return <>
                                 <div className='filmCard'>
@@ -61,9 +61,16 @@ function MovieList() {
 
                             </>
                         })}
-                        <button onClick={prevPage}>prev</button>
-                        <button onClick={nextPage}>next</button>
                     </div>
+                    <div className="w-100 d-flex justify-content-between container pb-5">
+                        {page == 1 ? (
+                            <span></span>
+                        ) : (
+                            <button className='btn btn-danger' onClick={prevPage}>prev</button>
+                        )}
+                        <button className='btn btn-danger' onClick={nextPage}>next</button>
+                    </div>
+
                 </>
 
             ) : <span></span>}

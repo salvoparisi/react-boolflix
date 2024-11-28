@@ -23,11 +23,11 @@ function Search() {
     return (
         <>
             {word === "" ? (
-                <span></span> // Mostra un elemento vuoto se `word` è vuoto
+                <span></span>
             ) : (
                 <>
                     <h2 className='text-center'>Stai cercando</h2>
-                    <div className="container d-flex flex-wrap justify-content-between">
+                    <div className="container d-flex flex-wrap justify-content-around">
                         {movie.map((film) => (
                             <div className="filmCard" key={film.id}>
                                 <div className="imgContainer">
