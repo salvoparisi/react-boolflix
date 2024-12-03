@@ -2,13 +2,17 @@ import { useContext, useEffect, useState } from 'react';
 import { SearchContext } from '../context/SearchContext';
 
 function Search() {
+    const apikey = import.meta.env.VITE_REACT_APP_API_KEY
+
     const { word } = useContext(SearchContext);
     const [movie, setMovie] = useState([]);
     const imgUrl = 'https://image.tmdb.org/t/p/w300';
 
     const fetchMovie = () => {
         if (!word) return;
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=43a33bed768e04ff02ede288e6c2b21a&query=${word}`;
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${word}`;
+        console.log(url);
+
 
         fetch(url)
             .then((res) => res.json())
