@@ -1,6 +1,8 @@
 import { useContext, useState, useEffect } from 'react'
 import Search from './SearchList'
 import { SearchContext } from '../context/SearchContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function MovieList() {
     const auth = import.meta.env.VITE_REACT_APP_AUTH
@@ -42,6 +44,12 @@ function MovieList() {
         fetchMovie()
     }
 
+    const getStars = (vote) => {
+        const starCount = Math.round(vote / 2);
+        return [...Array(starCount)].map((_, index) => (
+            <FontAwesomeIcon key={index} icon={faStar} />
+        ));
+    };
 
 
     return (
@@ -53,11 +61,18 @@ function MovieList() {
                     <div className='container d-flex flex-wrap justify-content-around'>
                         {movie.map(film => {
                             return <>
-                                <div className='filmCard'>
+                                <div className='filmCard position-relative'>
                                     <div className='imgContainer'>
                                         <img src={`${imgUrl}${film.poster_path}`} alt="" />
                                     </div>
                                     <h4>{film.title}</h4>
+                                    <div className='info position-absolute p-3'>
+                                        <p>title: {film.title}</p>
+                                        <p>original title: {film.original_title}</p>
+                                        <p>overview: {film.overview}</p>
+                                        <p>language: {film.original_language}</p>
+                                        <p>Vote: {getStars(film.vote_average)}</p>
+                                    </div>
                                 </div>
 
                             </>

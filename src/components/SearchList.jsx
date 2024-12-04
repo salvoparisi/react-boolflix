@@ -37,9 +37,8 @@ function Search() {
         fetchSeries();
     }, [word]);
 
-    // Funzione per calcolare il numero di stelle da mostrare
     const getStars = (vote) => {
-        const starCount = Math.round(vote / 2); // Scala da 0 a 5 stelle
+        const starCount = Math.round(vote / 2);
         return [...Array(starCount)].map((_, index) => (
             <FontAwesomeIcon key={index} icon={faStar} />
         ));
